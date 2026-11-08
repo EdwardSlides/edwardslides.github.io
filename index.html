@@ -74,18 +74,16 @@
         <h1>Presentation Menu</h1>
         <p>Would you like to download the PowerPoint presentation to your device or exit?</p>
         
-        <!-- DOWNLOAD BUTTON: Using your exact required link format layout -->
-        <a href="https://1drv.ms/p/c/6ebf01f9d962c800/IQBMhgOPV-jXQK9pX02u2Ow2AWBm5caih3Bed5GyegOTVnM?e=6my1e2&download=1" 
-           class="btn btn-download">
-            Download PowerPoint
-        </a>
+        <!-- PASTE YOUR GOOGLE DRIVE LINK INSIDE THE QUOTES BELOW -->
+       <a href="https://1drv.ms/p/c/6ebf01f9d962c800/IQBMhgOPV-jXQK9pX02u2Ow2AWBm5caih3Bed5GyegOTVnM?e=6my1e2" target="_blank" download="Presentation.pptx" class="btn btn-download">
+    Download PowerPoint
+</a>
+
         
-        <!-- EXIT BUTTON -->
         <button onclick="triggerExit()" class="btn btn-exit">Exit</button>
     </div>
 
     <script>
-        // Simple UI swap that triggers instantly with zero delays
         function triggerExit() {
             document.getElementById('menu-card').innerHTML = `
                 <h1 style="color: #64748b; margin-top: 10px;">Session Closed</h1>
