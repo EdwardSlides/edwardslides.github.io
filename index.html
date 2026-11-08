@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Hub</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 22px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .btn-download {
+            background: #2ed573;
+            color: white;
+        }
+        .btn-download:hover {
+            background: #26af5f;
+        }
+        .btn-exit {
+            background: #f1f5f9;
+            color: #475569;
+        }
+        .btn-exit:hover {
+            background: #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="menu-card">
+        <h1>Presentation Menu</h1>
+        <p>Would you like to download the PowerPoint presentation to your device or exit?</p>
+        
+        <!-- PASTE YOUR GOOGLE DRIVE LINK INSIDE THE QUOTES BELOW -->
+        <a href="https://1drv.ms/p/c/6ebf01f9d962c800/IQBMhgOPV-jXQK9pX02u2Ow2AWBm5caih3Bed5GyegOTVnM&download=1" class="btn btn-download">
+            Download PowerPoint
+        </a>
+        
+        <button onclick="triggerExit()" class="btn btn-exit">Exit</button>
+    </div>
+
+    <script>
+        function triggerExit() {
+            document.getElementById('menu-card').innerHTML = `
+                <h1 style="color: #64748b; margin-top: 10px;">Session Closed</h1>
+                <p>Thank you! You can now safely close this browser tab.</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
