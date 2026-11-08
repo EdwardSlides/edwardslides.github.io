@@ -66,13 +66,6 @@
         .btn-exit:hover {
             background: #e2e8f0;
         }
-        .loading-text {
-            font-size: 14px;
-            color: #4f46e5;
-            font-weight: 600;
-            margin-top: 10px;
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -81,57 +74,18 @@
         <h1>Presentation Menu</h1>
         <p>Would you like to download the PowerPoint presentation to your device or exit?</p>
         
-        <!-- DOWNLOAD BUTTON -->
-        <button onclick="forceDeviceDownload()" class="btn btn-download" id="dl-btn">
+        <!-- DOWNLOAD BUTTON: Using your exact required link format layout -->
+        <a href="https://1drv.ms/p/c/6ebf01f9d962c800/IQBMhgOPV-jXQK9pX02u2Ow2AWBm5caih3Bed5GyegOTVnM?e=6my1e2&download=1" 
+           class="btn btn-download">
             Download PowerPoint
-        </button>
-        
-        <div id="status" class="loading-text">Downloading file to storage...</div>
+        </a>
         
         <!-- EXIT BUTTON -->
         <button onclick="triggerExit()" class="btn btn-exit">Exit</button>
     </div>
 
     <script>
-        function forceDeviceDownload() {
-            const btn = document.getElementById('dl-btn');
-            const status = document.getElementById('status');
-            
-            btn.disabled = true;
-            btn.style.background = '#a3eed0';
-            status.style.display = 'block';
-            
-            // Swapped to your exact provided link format
-            const directUrl = "https://1drv.ms/p/c/6ebf01f9d962c800/IQBMhgOPV-jXQK9pX02u2Ow2AWBm5caih3Bed5GyegOTVnM?e=6my1e2";
-            
-            fetch(directUrl)
-                .then(response => {
-                    if (!response.ok) throw new Error('Network error');
-                    return response.blob();
-                })
-                .then(blob => {
-                    const blobUrl = window.URL.createObjectURL(blob);
-                    const link = document.createElement('a');
-                    link.href = blobUrl;
-                    link.download = "Presentation.pptx";
-                    
-                    document.body.appendChild(link);
-                    link.click();
-                    
-                    document.body.removeChild(link);
-                    window.URL.revokeObjectURL(blobUrl);
-                    
-                    btn.disabled = false;
-                    btn.style.background = '#2ed573';
-                    status.style.display = 'none';
-                })
-                .catch(error => {
-                    console.error(error);
-                    // Fallback to direct redirect so it still triggers no matter what
-                    window.location.href = directUrl;
-                });
-        }
-
+        // Simple UI swap that triggers instantly with zero delays
         function triggerExit() {
             document.getElementById('menu-card').innerHTML = `
                 <h1 style="color: #64748b; margin-top: 10px;">Session Closed</h1>
