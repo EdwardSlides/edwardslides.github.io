@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -75,7 +75,7 @@
         <p>Would you like to download the PowerPoint presentation to your device or exit?</p>
         
         <!-- PASTE YOUR GOOGLE DRIVE LINK INSIDE THE QUOTES BELOW -->
-       <a href="https://www.mediafire.com/file/48n8r2b0z0xnq9n/English7Presentation.pptx/file" download="English7Presentation.zip" class="btn btn-download">
+       <a href="https://1drv.ms/p/c/6ebf01f9d962c800/IQBMhgOPV-jXQK9pX02u2Ow2AQffPtpMVo1LnvOil6tmCRk?e=wKkV8z&download=1" download="Presentation.pptx" class="btn btn-download">
     Download PowerPoint
 </a>
 
@@ -84,6 +84,156 @@
     </div>
 
     <script>
+        function triggerExit() {
+            document.getElementById('menu-card').innerHTML = `
+                <h1 style="color: #64748b; margin-top: 10px;">Session Closed</h1>
+                <p>Thank you! You can now safely close this browser tab.</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
+1drv.ms
+8:52 AM
+You sent
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation Hub</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 22px;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            text-align: center;
+        }
+        .btn-download {
+            background: #2ed573;
+            color: white;
+        }
+        .btn-download:hover {
+            background: #26af5f;
+        }
+        .btn-exit {
+            background: #f1f5f9;
+            color: #475569;
+        }
+        .btn-exit:hover {
+            background: #e2e8f0;
+        }
+        .loading-text {
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="menu-card">
+        <h1>Presentation Menu</h1>
+        <p>Would you like to download the PowerPoint presentation to your device or exit?</p>
+        
+        <!-- The button now calls the force download JavaScript function -->
+        <button onclick="forceMobileDownload()" class="btn btn-download" id="dl-btn">
+            Download PowerPoint
+        </button>
+        <div id="status" class="loading-text">Downloading... please wait</div>
+        
+        <button onclick="triggerExit()" class="btn btn-exit">Exit</button>
+    </div>
+
+    <script>
+        function forceMobileDownload() {
+            const fileName = 'English7Presentation.pptx';
+            const statusDiv = document.getElementById('status');
+            const btn = document.getElementById('dl-btn');
+            
+            // Show loading indicators
+            btn.disabled = true;
+            btn.style.opacity = '0.6';
+            statusDiv.style.display = 'block';
+
+            // Fetch the file directly from your GitHub directory as raw binary data
+            fetch(fileName)
+                .then(response => {
+                    if (!response.ok) throw new Error('Network error');
+                    return response.blob();
+                })
+                .then(blob => {
+                    // Convert raw binary data into a forced local download link
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = blobUrl;
+                    link.download = fileName;
+                    
+                    // Secretly add to page, click it to trigger download, then remove it
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Clean up memory
+                    window.URL.revokeObjectURL(blobUrl);
+                    
+                    // Reset button states
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    statusDiv.style.display = 'none';
+                })
+                .catch(error => {
+                    alert('Download failed. Please check your internet connection.');
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    statusDiv.style.display = 'none';
+                });
+        }
+
         function triggerExit() {
             document.getElementById('menu-card').innerHTML = `
                 <h1 style="color: #64748b; margin-top: 10px;">Session Closed</h1>
